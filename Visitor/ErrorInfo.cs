@@ -18,5 +18,6 @@ namespace Visitor
         }
 
         public abstract void Accept(Visitor visitor);
+        protected abstract void LogErrorInfo();
     }
 }

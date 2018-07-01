@@ -1,9 +1,8 @@
-﻿
-namespace Visitor
+﻿namespace Visitor
 {
     abstract class Visitor
     {
-        public abstract void VisitDatabaseErrorInfo(DatabaseErrorInfo databaseErrorInfo);
-        public abstract void VisitServerErrorInfo(ServerErrorInfo serverErrorInfo);
+        public delegate void GetErrorInfo();
+        public abstract void VisitErrorInfo(GetErrorInfo getErrorInfo);
     }
 }

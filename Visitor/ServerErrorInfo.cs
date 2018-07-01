@@ -17,7 +17,21 @@ namespace Visitor
 
         public override void Accept(Visitor visitor)
         {
-            visitor.VisitServerErrorInfo(this);
+            visitor.VisitErrorInfo(LogErrorInfo);
+        }
+
+
+        protected override void LogErrorInfo()
+        {
+            if (Severity == Severity.Critical)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+            Console.WriteLine($"{TimeStamp} - Guid is {Id} \n " +
+                    $"Severity: {Severity} \n " +
+                    $"Description: {Description} \n " +
+                    $"Server id: {ServerId} \n");
+            Console.ResetColor();
         }
     }
 }

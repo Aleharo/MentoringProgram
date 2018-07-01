@@ -19,7 +19,22 @@ namespace Visitor
 
         public override void Accept(Visitor visitor)
         {
-            visitor.VisitDatabaseErrorInfo(this);
+            visitor.VisitErrorInfo(LogErrorInfo);
         }
+
+        protected override void LogErrorInfo()
+        {
+            if (Severity == Severity.Critical)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+            Console.WriteLine($"{TimeStamp} - Guid is {Id} \n " +
+                $"Severity: {Severity} \n " +
+                $"Description: {Description} \n " +
+                $"Database name: {DatabaseName} \n " +
+                $"User: {UserId} \n");
+            Console.ResetColor();
+        }
+
     }
 }
