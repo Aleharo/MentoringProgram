@@ -1,5 +1,4 @@
-﻿
-namespace Visitor
+﻿namespace Visitor
 {
     public enum Severity
     {

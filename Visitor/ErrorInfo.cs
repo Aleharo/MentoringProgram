@@ -18,6 +18,17 @@ namespace Visitor
         }
 
         public abstract void Accept(Visitor visitor);
-        protected abstract void LogErrorInfo();
+
+        protected virtual void LogErrorInfo()
+        {
+            if (Severity == Severity.Critical)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+
+            Console.WriteLine($"{TimeStamp} - Id: {Id}");
+            Console.WriteLine($"Severity: {Severity}");
+            Console.WriteLine($"Description: {Description}");
+        }
     }
 }

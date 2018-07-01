@@ -14,7 +14,6 @@ namespace Visitor
             logServer.Add(error1);
             logServer.Accept(new ConcreteVisitor());
 
-
             Console.ReadKey();
         }
     }

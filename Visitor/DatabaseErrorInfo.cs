@@ -2,12 +2,12 @@
 
 namespace Visitor
 {
-    class DatabaseErrorInfo:ErrorInfo
+    class DatabaseErrorInfo : ErrorInfo
     {
         public string DatabaseName { get; set; }
         public Guid UserId { get; set; }
 
-        public DatabaseErrorInfo(Guid id, string description, DateTime time, Severity severity, string dbName, Guid userId):base(id, description, time, severity)
+        public DatabaseErrorInfo(Guid id, string description, DateTime time, Severity severity, string dbName, Guid userId) : base(id, description, time, severity)
         {
             Id = id;
             Description = description;
@@ -24,15 +24,9 @@ namespace Visitor
 
         protected override void LogErrorInfo()
         {
-            if (Severity == Severity.Critical)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-            }
-            Console.WriteLine($"{TimeStamp} - Guid is {Id} \n " +
-                $"Severity: {Severity} \n " +
-                $"Description: {Description} \n " +
-                $"Database name: {DatabaseName} \n " +
-                $"User: {UserId} \n");
+            base.LogErrorInfo();            
+            Console.WriteLine($"Database name: {DatabaseName}");
+            Console.WriteLine($"User: {UserId} \n");
             Console.ResetColor();
         }
 

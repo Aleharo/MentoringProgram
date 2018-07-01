@@ -2,7 +2,7 @@
 
 namespace Visitor
 {
-    class ServerErrorInfo: ErrorInfo 
+    class ServerErrorInfo : ErrorInfo
     {
         public Guid ServerId { get; set; }
 
@@ -20,17 +20,10 @@ namespace Visitor
             visitor.VisitErrorInfo(LogErrorInfo);
         }
 
-
         protected override void LogErrorInfo()
         {
-            if (Severity == Severity.Critical)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-            }
-            Console.WriteLine($"{TimeStamp} - Guid is {Id} \n " +
-                    $"Severity: {Severity} \n " +
-                    $"Description: {Description} \n " +
-                    $"Server id: {ServerId} \n");
+            base.LogErrorInfo();
+            Console.WriteLine($"Server id: {ServerId} \n");
             Console.ResetColor();
         }
     }
